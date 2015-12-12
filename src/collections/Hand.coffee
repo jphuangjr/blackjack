@@ -7,16 +7,19 @@ class window.Hand extends Backbone.Collection
     popped = @deck.pop()
     @add(popped)
     # console.log(@scores()[0])
-    alert('You lost boy!') if @scores()[0] > 21
+    @compare() and @compared = true and console.log("shoukd have compared") if @scores()[0] > 21 and @compared is false
+
     @last()
   
   beenFlipped: false
+
+  compared: false
 
   stand: ->
     @first().flip() and @beenFlipped = true if @beenFlipped is false
     @hit() if @beenFlipped is true
     @stand() if(@scores()[0] < 17 )
-    @compare() if(@scores()[0] >= 17)
+    @compare() and @compared = true if @scores()[0] >= 17 and @compared is false
     # @hit and console.log(@scores()[0]) while @scores()[0] < 17
 
   hasAce: -> @reduce (memo, card) ->
@@ -37,4 +40,7 @@ class window.Hand extends Backbone.Collection
     # when there is an ace, it offers you two scores - the original score, and score + 10.
     [@minScore(), @minScore() + 10 * @hasAce()]
 
+  scoresMax: ->
+    max = @scores()[1] if @scores()[1] <= 21
+    max = @scores()[0] if @scores()[1] > 21
 
