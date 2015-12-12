@@ -16,7 +16,7 @@ class window.Hand extends Backbone.Collection
     @first().flip() and @beenFlipped = true if @beenFlipped is false
     @hit() if @beenFlipped is true
     @stand() if(@scores()[0] < 17 )
-    # @compare() if(@scores()[0] > 17 and @scores()[0] < 21)
+    @compare() if(@scores()[0] >= 17)
     # @hit and console.log(@scores()[0]) while @scores()[0] < 17
 
   hasAce: -> @reduce (memo, card) ->
@@ -26,6 +26,10 @@ class window.Hand extends Backbone.Collection
   minScore: -> @reduce (score, card) ->
     score + if card.get 'revealed' then card.get 'value' else 0
   , 0
+
+  compare: ->
+    console.log("trigger")
+    @trigger 'compare'
 
   scores: ->
     # The scores are an array of potential scores.
