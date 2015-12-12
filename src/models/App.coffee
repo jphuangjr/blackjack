@@ -18,4 +18,4 @@ class window.App extends Backbone.Model
     dealerScore = @get("dealerHand").scoresMax() 
     console.log(playerScore, dealerScore)
     alert("You win") if playerScore < 21 and playerScore > dealerScore and playerScore != dealerScore or dealerScore > 21
-    alert("Dealer win") if dealerScore < 21 and dealerScore > playerScore and dealerScore != playerScore or playerScore > 21
+    alert("Dealer win") if dealerScore < 21 and dealerScore > playerScore and dealerScore != playerScore or playerScore > 21 or dealerScore == playerScore
