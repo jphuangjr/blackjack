@@ -18,8 +18,8 @@ class window.Hand extends Backbone.Collection
   stand: ->
     @first().flip() and @beenFlipped = true if @beenFlipped is false
     @hit() if @beenFlipped is true
-    @stand() if(@scores()[0] < 17 )
-    @compare() and @compared = true if @scores()[0] >= 17 and @compared is false
+    @stand() if(@scoresMax() < 17 )
+    @compare() and @compared = true if @scoresMax() >= 17 and @compared is false
     # @hit and console.log(@scores()[0]) while @scores()[0] < 17
 
   hasAce: -> @reduce (memo, card) ->
@@ -41,6 +41,8 @@ class window.Hand extends Backbone.Collection
     [@minScore(), @minScore() + 10 * @hasAce()]
 
   scoresMax: ->
-    max = @scores()[1] if @scores()[1] <= 21
-    max = @scores()[0] if @scores()[1] > 21
+    if @scores()[1] > @scores()[0] && @scores()[1] < 22
+      @scores()[1] 
+    else
+      @scores()[0]
 
