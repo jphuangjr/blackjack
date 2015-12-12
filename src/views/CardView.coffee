@@ -2,7 +2,7 @@ class window.CardView extends Backbone.View
   className: 'card'
   # tagName: 'img'
   # template: _.template '<%= rankName %> of <%= suitName %>'
-  template: _.template '<div class="card2" style = "background-image: url(\'img/cards/<%=rankName%>-<%=suitName%>.png\')"></div>'
+  template: _.template '<div class="card2" style = "background-image: url(\'img/cards/<%=rankName%>-<%=suitName%>.png\'); background-size: contain;"></div>'
   # template: _.template '<img class="card" src="img/cards/<%= rankName %>-<%= suitName %>.png">'
 
 

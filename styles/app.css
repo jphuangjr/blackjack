@@ -24,3 +24,14 @@
 .hand {
   overflow: auto;
 }
+
+body {
+  padding: 20px;
+  background-image: url("https://wildfire.sclv.com/~/media/Images/Page%20Background%20Images/Shared/Gaming_Tables03.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h2 {
+  color: red;
+}

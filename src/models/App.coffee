@@ -2,6 +2,7 @@
 # of containing the game logic directly.
 class window.App extends Backbone.Model
   initialize: ->
+    @set 'playerScore', playerScore = new Chip()
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
@@ -17,5 +18,6 @@ class window.App extends Backbone.Model
     playerScore = @get("playerHand").scoresMax()
     dealerScore = @get("dealerHand").scoresMax() 
     console.log(playerScore, dealerScore)
+    @trigger "render"
     alert("You win") if playerScore < 21 and playerScore > dealerScore and playerScore != dealerScore or dealerScore > 21
     alert("Dealer win") if dealerScore < 21 and dealerScore > playerScore and dealerScore != playerScore or playerScore > 21 or dealerScore == playerScore
