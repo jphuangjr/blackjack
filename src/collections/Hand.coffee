@@ -7,7 +7,7 @@ class window.Hand extends Backbone.Collection
     popped = @deck.pop()
     @add(popped)
     # console.log(@scores()[0])
-    @compare() and @compared = true and console.log("shoukd have compared") if @scores()[0] > 21 and @compared is false
+    @compare() and @compared = true and console.log("shoukd have compared") if @scoresMax() > 21 and @compared is false
 
     @last()
   
